@@ -24,12 +24,12 @@ const reducer = (state = initialState, action) => {
     return { users: [...state.users, action.payload] };
   } else if (action.type === 'delete') {
     const updatedList = state.users.filter((user) => {
-      return user.id != action.payload.id;
+      return user.id !== action.payload.id;
     });
     return { users: [...updatedList] };
   } else if (action.type === 'update') {
     const userIndex = state.users.findIndex((user) => {
-      return user.id == action.payload.id;
+      return user.id === action.payload.id;
     });
 
     const updatedList = [...state.users];

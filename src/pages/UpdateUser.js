@@ -15,7 +15,7 @@ const UpdateUser = () => {
   const { userId } = useParams();
 
   const user = users.find((user) => {
-    return user.id == userId;
+    return user.id === userId;
   });
 
   console.log(user);
@@ -45,28 +45,28 @@ const UpdateUser = () => {
   //   submit user
   const submitHandler = (e) => {
     e.preventDefault();
-    if (nameState.name == '') {
+    if (nameState.name === '') {
       setNameState({
         ...nameState,
         nameError: true,
         nameHelper: 'Please Enter Name',
       });
     }
-    if (emailState.email == '') {
+    if (emailState.email === '') {
       setEmailState({
         ...emailState,
         emailError: true,
         emailHelper: 'Please Enter Email',
       });
     }
-    if (contactState.contact == '') {
+    if (contactState.contact === '') {
       setContactState({
         ...contactState,
         contactError: true,
         contactHelper: 'Please Enter Contact',
       });
     }
-    if (placeState.place == '') {
+    if (placeState.place === '') {
       setPlaceState({
         ...placeState,
         placeError: true,
@@ -76,10 +76,10 @@ const UpdateUser = () => {
 
     // validating and submitting user
     if (
-      nameState.name != '' &&
-      emailState.email != '' &&
-      contactState.contact != '' &&
-      placeState.place != ''
+      nameState.name !== '' &&
+      emailState.email !== '' &&
+      contactState.contact !== '' &&
+      placeState.place !== ''
     ) {
       dispatch({
         type: 'update',
