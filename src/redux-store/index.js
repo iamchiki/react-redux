@@ -31,13 +31,7 @@ const reducer = (state = initialState, action) => {
     const userIndex = state.users.findIndex((user) => {
       return user.id == action.payload.id;
     });
-    // const updatedList = state.users.map((user) => {
-    //   if ((user.id = action.payload.id)) {
-    //     return action.payload;
-    //   } else {
-    //     return user;
-    //   }
-    // });
+
     const updatedList = [...state.users];
     updatedList[userIndex] = action.payload;
 
