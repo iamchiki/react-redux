@@ -33,6 +33,13 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
+// const useStyles = makeStyles((theme) => ({
+//   buttonSpacing: {
+//     display: 'flex',
+//     justifyContent: 'space-between',
+//   },
+// }));
+
 function createData() {
   //   return { name, calories, fat, carbs, protein };
 }
@@ -46,13 +53,13 @@ function createData() {
 //   return { name, calories, fat, carbs, protein };
 // }
 
-const rows = [
-  createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-  createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-  createData('Eclair', 262, 16.0, 24, 6.0),
-  createData('Cupcake', 305, 3.7, 67, 4.3),
-  createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
+// const rows = [
+//   createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
+//   createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
+//   createData('Eclair', 262, 16.0, 24, 6.0),
+//   createData('Cupcake', 305, 3.7, 67, 4.3),
+//   createData('Gingerbread', 356, 16.0, 49, 3.9),
+// ];
 
 const Users = () => {
   const dispatch = useDispatch();
@@ -81,51 +88,55 @@ const Users = () => {
     navigate(`/update-user/${id}`);
   };
 
-  console.log(users);
   return (
     <React.Fragment>
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 700 }} aria-label='customized table'>
-          <TableHead>
-            <TableRow>
-              <StyledTableCell align='center'>Name</StyledTableCell>
-              <StyledTableCell align='center'>Email</StyledTableCell>
-              <StyledTableCell align='center'>Contact</StyledTableCell>
-              <StyledTableCell align='center'>Place</StyledTableCell>
-              <StyledTableCell align='center'>Actions</StyledTableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {users &&
-              users.map((user) => {
-                return (
-                  <StyledTableRow key={user.id}>
-                    <StyledTableCell align='center' component='th' scope='row'>
-                      {user.name}
-                    </StyledTableCell>
-                    <StyledTableCell align='center'>
-                      {user.email}
-                    </StyledTableCell>
-                    <StyledTableCell align='center'>
-                      {user.contact}
-                    </StyledTableCell>
-                    <StyledTableCell align='center'>
-                      {user.place}
-                    </StyledTableCell>
-                    <StyledTableCell align='center'>
-                      <ButtonGroup
-                        variant='contained'
-                        aria-label='outlined button group'>
-                        <Box mr={2}>
-                          <Button
-                            onClick={() => {
-                              updateHandler(user.id);
-                            }}
-                            variant='contained'
-                            color='primary'>
-                            Edit
-                          </Button>
-                        </Box>
+      <div style={{ width: '100%', marginTop: 50 }}>
+        <TableContainer sx={{ width: '60%', margin: 'auto' }} component={Paper}>
+          <Table aria-label='customized table'>
+            <TableHead>
+              <TableRow>
+                <StyledTableCell align='center'>Name</StyledTableCell>
+                <StyledTableCell align='center'>Email</StyledTableCell>
+                <StyledTableCell align='center'>Contact</StyledTableCell>
+                <StyledTableCell align='center'>Place</StyledTableCell>
+                <StyledTableCell align='center'>Actions</StyledTableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {users &&
+                users.map((user) => {
+                  return (
+                    <StyledTableRow key={user.id}>
+                      <StyledTableCell
+                        align='center'
+                        component='th'
+                        scope='row'>
+                        {user.name}
+                      </StyledTableCell>
+                      <StyledTableCell align='center'>
+                        {user.email}
+                      </StyledTableCell>
+                      <StyledTableCell align='center'>
+                        {user.contact}
+                      </StyledTableCell>
+                      <StyledTableCell align='center'>
+                        {user.place}
+                      </StyledTableCell>
+                      <StyledTableCell align='center'>
+                        {/* <ButtonGroup
+                          variant='contained'
+                          aria-label='outlined button group'> */}
+
+                        <Button
+                          onClick={() => {
+                            updateHandler(user.id);
+                          }}
+                          variant='contained'
+                          color='primary'
+                          style={{ marginRight: 10 }}>
+                          Edit
+                        </Button>
+
                         <Button
                           onClick={() => {
                             deleteHandler(user.id);
@@ -134,25 +145,27 @@ const Users = () => {
                           color='secondary'>
                           Delete
                         </Button>
-                      </ButtonGroup>
-                    </StyledTableCell>
-                  </StyledTableRow>
-                );
-              })}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <Grid
-        container
-        spacing={0}
-        direction='column'
-        alignItems='center'
-        justifyContent='center'
-        style={{ marginTop: '20px' }}>
-        <Button variant='contained' color='primary' onClick={addUser}>
-          AddUser
-        </Button>
-      </Grid>
+
+                        {/* </ButtonGroup> */}
+                      </StyledTableCell>
+                    </StyledTableRow>
+                  );
+                })}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <Grid
+          container
+          spacing={0}
+          direction='column'
+          alignItems='center'
+          justifyContent='center'
+          style={{ marginTop: '20px' }}>
+          <Button variant='contained' color='primary' onClick={addUser}>
+            AddUser
+          </Button>
+        </Grid>
+      </div>
     </React.Fragment>
   );
 };
