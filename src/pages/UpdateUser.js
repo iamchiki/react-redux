@@ -3,37 +3,44 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Button, Grid } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
-const AddUser = () => {
-  // input states
-  const [nameState, setNameState] = useState({
-    name: '',
-    nameError: false,
-    nameHelper: '',
-  });
-  const [emailState, setEmailState] = useState({
-    email: '',
-    emailError: false,
-    emailHelper: '',
-  });
-  const [contactState, setContactState] = useState({
-    contact: '',
-    contactError: false,
-    contactHelper: '',
-  });
-  const [placeState, setPlaceState] = useState({
-    place: '',
-    placeError: false,
-    placeHelper: '',
-  });
-
+const UpdateUser = () => {
   //   navigation and state hooks
   const users = useSelector((state) => {
     return state.users;
   });
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { userId } = useParams();
+
+  const user = users.find((user) => {
+    return user.id == userId;
+  });
+
+  console.log(user);
+
+  // input states
+  const [nameState, setNameState] = useState({
+    name: user.name,
+    nameError: false,
+    nameHelper: '',
+  });
+  const [emailState, setEmailState] = useState({
+    email: user.email,
+    emailError: false,
+    emailHelper: '',
+  });
+  const [contactState, setContactState] = useState({
+    contact: user.contact,
+    contactError: false,
+    contactHelper: '',
+  });
+  const [placeState, setPlaceState] = useState({
+    place: user.place,
+    placeError: false,
+    placeHelper: '',
+  });
 
   //   submit user
   const submitHandler = (e) => {
@@ -75,9 +82,9 @@ const AddUser = () => {
       placeState.place != ''
     ) {
       dispatch({
-        type: 'add',
+        type: 'update',
         payload: {
-          id: users.length + 1,
+          id: userId,
           name: nameState.name,
           email: emailState.email,
           contact: contactState.contact,
@@ -179,7 +186,7 @@ const AddUser = () => {
             color='primary'
             onClick={submitHandler}
             type='submit'>
-            Add User
+            Update User
           </Button>
         </Grid>
       </Box>
@@ -187,4 +194,4 @@ const AddUser = () => {
   );
 };
 
-export default AddUser;
+export default UpdateUser;

@@ -65,18 +65,25 @@ const Users = () => {
   const addUser = () => {
     navigate('/add-user');
   };
-  // const addUser = () => {
-  //   dispatch({ type: 'add', payload: { name: 'akshay' } });
-  // };
+
+  // delete user
+  const deleteHandler = (id) => {
+    dispatch({
+      type: 'delete',
+      payload: {
+        id: id,
+      },
+    });
+  };
+
+  // update user
+  const updateHandler = (id) => {
+    navigate(`/update-user/${id}`);
+  };
 
   console.log(users);
   return (
     <React.Fragment>
-      {/* <h1>hello </h1>
-      {users.map((user) => {
-        return <p>{user.name}</p>;
-      })}
-      <button onClick={addUser}>add user</button> */}
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 700 }} aria-label='customized table'>
           <TableHead>
@@ -110,11 +117,21 @@ const Users = () => {
                         variant='contained'
                         aria-label='outlined button group'>
                         <Box mr={2}>
-                          <Button variant='contained' color='primary'>
+                          <Button
+                            onClick={() => {
+                              updateHandler(user.id);
+                            }}
+                            variant='contained'
+                            color='primary'>
                             Edit
                           </Button>
                         </Box>
-                        <Button variant='contained' color='secondary'>
+                        <Button
+                          onClick={() => {
+                            deleteHandler(user.id);
+                          }}
+                          variant='contained'
+                          color='secondary'>
                           Delete
                         </Button>
                       </ButtonGroup>
@@ -131,7 +148,7 @@ const Users = () => {
         direction='column'
         alignItems='center'
         justifyContent='center'
-        style={{ margin: '20px' }}>
+        style={{ marginTop: '20px' }}>
         <Button variant='contained' color='primary' onClick={addUser}>
           AddUser
         </Button>
