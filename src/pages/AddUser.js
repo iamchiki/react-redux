@@ -74,7 +74,7 @@ const AddUser = () => {
       contactState.contact !== '' &&
       placeState.place !== ''
     ) {
-      let newUserId = users.length + 1;
+      let newUserId = Math.random();
       dispatch({
         type: 'add',
         payload: {
