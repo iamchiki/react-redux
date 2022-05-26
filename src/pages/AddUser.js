@@ -74,10 +74,11 @@ const AddUser = () => {
       contactState.contact !== '' &&
       placeState.place !== ''
     ) {
+      let newUserId = users.length + 1;
       dispatch({
         type: 'add',
         payload: {
-          id: users.length + 1,
+          id: newUserId.toString(),
           name: nameState.name,
           email: emailState.email,
           contact: contactState.contact,
