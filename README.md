@@ -4,4 +4,4 @@ This is a simple react redux app in which usser can be added, updated and delete
 
 ### Demo Link
 
-- [Live URL](https://new-iamchiki-react-app.netlify.app/users)
+- [Live URL](https://iamchiki-redux-app.netlify.app/users)
