@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import { Button, Grid } from '@mui/material';
+import { Button, Grid, Typography } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
@@ -96,6 +96,9 @@ const AddUser = () => {
       alignItems='center'
       justifyContent='center'
       style={{ minHeight: '100vh' }}>
+      <Typography variant='h3' gutterBottom component='div'>
+        Add User
+      </Typography>
       <Box
         component='form'
         sx={{
