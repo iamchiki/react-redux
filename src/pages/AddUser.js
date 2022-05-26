@@ -76,7 +76,7 @@ const AddUser = () => {
     ) {
       let newUserId = Math.random();
       dispatch({
-        type: 'add',
+        type: 'ADD',
         payload: {
           id: newUserId.toString(),
           name: nameState.name,

@@ -18,8 +18,6 @@ const UpdateUser = () => {
     return user.id === userId;
   });
 
-  console.log(user);
-
   // input states
   const [nameState, setNameState] = useState({
     name: user.name,
@@ -82,7 +80,7 @@ const UpdateUser = () => {
       placeState.place !== ''
     ) {
       dispatch({
-        type: 'update',
+        type: 'UPDATE',
         payload: {
           id: userId,
           name: nameState.name,

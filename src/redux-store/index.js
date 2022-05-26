@@ -21,14 +21,14 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'add':
+    case 'ADD':
       return { users: [...state.users, action.payload] };
-    case 'delete':
+    case 'DELETE':
       const newList = state.users.filter((user) => {
         return user.id !== action.payload.id;
       });
       return { users: [...newList] };
-    case 'update':
+    case 'UPDATE':
       const userIndex = state.users.findIndex((user) => {
         return user.id === action.payload.id;
       });

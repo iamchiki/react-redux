@@ -49,7 +49,7 @@ const Users = () => {
   // delete user
   const deleteHandler = (id) => {
     dispatch({
-      type: 'delete',
+      type: 'DELETE',
       payload: {
         id: id,
       },
